@@ -11,8 +11,8 @@ const Sidebar = ({ user }: SiderbarProps) => {
   const pathname = usePathname(); // Obtem o caminho atual do cliente
 
   return (
-    <section className="sticky left-0 top-0  w-[300px] h-screen py-8 px-12 border border-neutral-200 hidden md:flex ">
-      <div className="flex flex-col gap-8">
+    <section className="w-[350px] h-screen py-8 px-12 border border-neutral-200 hidden md:block ">
+      <div className="flex flex-col gap-8 w-[300px] h-[85vh]">
         {/* Logo */}
         <Link href="/">
           <Image src="/images/logo.png" width={120} height={120} alt="logo" />
@@ -30,7 +30,7 @@ const Sidebar = ({ user }: SiderbarProps) => {
                 key={item.label}
                 className={
                   isActive
-                    ? 'flex items-center gap-2 px-3 rounded-lg bg-gradient-to-r from-main-500 to-main-400 text-slate-50 font-bold w-full h-10'
+                    ? 'flex items-center gap-2 px-3 rounded-lg bg-gradient-to-r from-main-500 to-main-400 text-slate-50 font-bold w-52 h-10'
                     : 'px-3 gap-2 font-semibold text-gray-500 flex'
                 }
               >
@@ -46,8 +46,9 @@ const Sidebar = ({ user }: SiderbarProps) => {
             );
           })}
         </nav>
+        
       </div>
-
+      <Footer user={user} />
     </section>
   );
 };

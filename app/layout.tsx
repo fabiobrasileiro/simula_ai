@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 const inter = localFont({
   src: './fonts/GeistVF.woff', // Substitua pelo caminho correto do arquivo de fonte no seu projeto
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body
         className={` ${inter.variable} antialiased`}
       >
+        
         {children}
       </body>
     </html>

@@ -3,30 +3,7 @@ import React, { useState } from 'react';
 import Select, { StylesConfig } from 'react-select';
 import LoadingPage from './LoadingPage'; // Importe a página de loading
 
-const customStyles: StylesConfig = {
-    control: (provided) => ({
-      ...provided,
-      borderRadius: '0.375rem', // Tailwind rounded-md
-      borderColor: '#e5e7eb', // Tailwind gray-300
-      padding: '0.5rem',
-    }),
-    option: (provided, state) => ({
-      ...provided,
-      padding: '0.75rem 1rem',
-      fontSize: '1rem',
-      fontWeight: state.isSelected ? 'bold' : 'normal',
-      backgroundColor: state.isSelected
-        ? '#FB923C' // Tailwind orange-400
-        : state.isFocused
-        ? '#f3f4f6' // Tailwind gray-100 (hover/focus effect)
-        : 'white',
-      color: state.isSelected ? 'white' : 'gray',
-    }),
-    singleValue: (provided) => ({
-      ...provided,
-      color: '#1f2937', // Tailwind gray-800 (for the selected value)
-    }),
-};
+
 
 const SimuladoForm = () => {
     const [file, setFile] = useState<File | null>(null);
@@ -41,14 +18,12 @@ const SimuladoForm = () => {
     };
 
     const handleSubmit = () => {
-        // Ativar a tela de loading
         setLoading(true);
 
-        // Simula o processamento do simulado (substitua com sua lógica de backend)
         setTimeout(() => {
-            setLoading(false); // Finaliza o loading após 3 segundos (simulação)
+            setLoading(false); 
             console.log({ file, questionCount, difficulty });
-        }, 3000); // 3 segundos de "processamento"
+        }, 3000); 
     };
 
     return (
@@ -61,9 +36,9 @@ const SimuladoForm = () => {
 
                     <div className="mb-4">
                         <label className="block text-sm font-medium text-gray-700">Upload de arquivo</label>
-                        <input 
-                            type="file" 
-                            onChange={handleFileChange} 
+                        <input
+                            type="file"
+                            onChange={handleFileChange}
                             className="w-full mt-2 p-2 border rounded-lg"
                         />
                     </div>
@@ -75,8 +50,9 @@ const SimuladoForm = () => {
                             onChange={(e) => setQuestionCount(Number(e.target.value))}
                             className="w-full mt-2 p-2 border rounded-lg"
                         >
-                            {[3, 5, 10, 15, 20].map((num) => (
-                                <option key={num} value={num}>{num}</option>
+                            {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+                                <option key={num} value={num} >
+                                    {num}</option>
                             ))}
                         </select>
                     </div>
@@ -104,7 +80,7 @@ const SimuladoForm = () => {
                         onClick={handleSubmit}
                         className="w-full p-3 bg-orange-500 text-white rounded-lg font-bold hover:bg-orange-600"
                     >
-                        Create quiz
+                        Crie seu simulado
                     </button>
                 </div>
             )}
