@@ -13,6 +13,7 @@ const inter = localFont({
 export const metadata: Metadata = {
   title: "SimulaAi",
   description: "Crie simulados rápido e incríveis",
+  icons: '/icons/logo.png'
 };
 
 export default function RootLayout({

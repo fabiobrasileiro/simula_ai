@@ -81,9 +81,7 @@ const Simulado: React.FC = () => {
         </svg>
         {formatTime(elapsedTime)}
       </div>
-      <section className="w-full flex flex-col gap-10 relative">
-        {/* Relógio */}
-
+      <section className="w-full flex flex-col gap-5 relative">
 
         {/* Pergunta atual */}
         <QuestionSimulado

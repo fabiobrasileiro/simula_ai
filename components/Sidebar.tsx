@@ -12,7 +12,7 @@ const Sidebar = ({ user }: SiderbarProps) => {
 
   return (
     <section className="w-[350px] h-screen py-8 px-12 border border-neutral-200 hidden md:block ">
-      <div className="flex flex-col gap-8 w-[300px] h-[85vh]">
+      <div className="flex flex-col gap-8 w-[300px] h-[85vh] ">
         {/* Logo */}
         <Link href="/">
           <Image src="/images/logo.png" width={120} height={120} alt="logo" />

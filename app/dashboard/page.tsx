@@ -1,16 +1,12 @@
 'use client';
 
-import Navbar from '@/components/Navbar';
 import React from 'react';
+import Navbar from '@/components/Navbar';
+import SimuladoHeader from '@/components/SimuladoHeader';
+import QuestionItem from '@/components/QuestionItem';
 import { Button } from '@/components/ui/button';
 
-interface QuestionDetail {
-  question: string;
-  options: string[];
-  correctAnswer: number; // Índice da resposta correta no array de options
-  userAnswer: number; // Índice da resposta escolhida pelo usuário
-}
-
+// Mock para simular um backend
 const mockSimuladoDetail = {
   id: '1',
   title: 'Simulado de Geografia',
@@ -39,59 +35,20 @@ const mockSimuladoDetail = {
   ],
 };
 
-const SimuladoDetail: React.FC = () => {
+const SimuladoDetailPage: React.FC = () => {
   const { title, score, time, date, questions } = mockSimuladoDetail;
 
   return (
     <div>
       <Navbar />
-      <div className="p-8">
-        {/* Título e Resumo */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold">
-            Detalhes do <span className="text-main-500">{title}</span>
-          </h1>
-          <p className="text-lg text-gray-600">
-            Pontuação: <span className="font-semibold">{score}</span> | Tempo: <span className="font-semibold">{time}</span> | Data: <span className="font-semibold">{date}</span>
-          </p>
-        </div>
+      <div className="p-4 md:p-8">
+        {/* Cabeçalho */}
+        <SimuladoHeader title={title} score={score} time={time} date={date} />
 
         {/* Lista de Perguntas */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4 md:gap-6">
           {questions.map((question, index) => (
-            <div
-              key={index}
-              className="border border-gray-200 rounded-lg shadow-md p-4"
-            >
-              <h2 className="text-lg font-bold mb-2">
-                {index + 1}. {question.question}
-              </h2>
-              <ul className="flex flex-col gap-2">
-                {question.options.map((option, optionIndex) => {
-                  const isCorrect = optionIndex === question.correctAnswer;
-                  const isUserAnswer = optionIndex === question.userAnswer;
-
-                  return (
-                    <li
-                      key={optionIndex}
-                      className={`p-2 rounded-lg ${
-                        isCorrect
-                          ? 'bg-green-100 text-green-800 font-bold'
-                          : isUserAnswer
-                          ? 'bg-red-100 text-red-800 font-semibold'
-                          : 'bg-gray-100 text-gray-800'
-                      }`}
-                    >
-                      {optionIndex + 1}. {option}
-                      {isCorrect && <span className="ml-2">(Correta)</span>}
-                      {isUserAnswer && !isCorrect && (
-                        <span className="ml-2">(Escolhida)</span>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+            <QuestionItem key={index} question={question} index={index} />
           ))}
         </div>
 
@@ -99,7 +56,7 @@ const SimuladoDetail: React.FC = () => {
         <div className="mt-10 flex justify-center">
           <Button
             onClick={() => console.log('Voltar para a página de resultados')}
-            className="bg-main-500 text-white font-bold px-6 py-3 hover:bg-main-600"
+            className="bg-main-500 text-white font-bold px-4 py-2 md:px-6 md:py-3 hover:bg-main-600"
           >
             Voltar para Resultados
           </Button>
@@ -109,4 +66,4 @@ const SimuladoDetail: React.FC = () => {
   );
 };
 
-export default SimuladoDetail;
+export default SimuladoDetailPage;

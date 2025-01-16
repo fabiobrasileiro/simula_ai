@@ -12,7 +12,6 @@ const page = () => {
   const router = useRouter()
 
   useEffect(() => {
-    // Função assíncrona dentro do useEffect para pegar o usuário logado
     const fetchUser = async () => {
       const loggedInUser = await getLoggedInUser()
       if (!loggedInUser) {
@@ -23,10 +22,9 @@ const page = () => {
     }
 
     fetchUser()
-  }, [router]) // Esse efeito só será executado quando o componente for montado
+  }, [router]) 
 
   if (!user) {
-    // Opcional: você pode exibir um loading até que o estado 'user' seja definido
     return <div></div>
   }
 
