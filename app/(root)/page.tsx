@@ -5,6 +5,7 @@ import { getLoggedInUser, logoutUser } from '@/lib/auth';
 import { User } from 'firebase/auth';
 import React, { useState } from 'react';
 import {useRouter} from 'next/navigation';
+import SimuladosResults from '@/components/SimuladosResults';
 
 
 const page =  () => {
@@ -22,12 +23,7 @@ const page =  () => {
   
  
   return (
-    <button
-    onClick={handleLogout}
-    className="p-3 bg-red-500 text-white rounded-lg"
-  >
-    Logout
-  </button>
+   <SimuladosResults />
   )
 }
 
