@@ -32,7 +32,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex">
       <Sidebar user={user} />
-      <div className="md:hidden p-8">
+      <div className="md:hidden p-8 absolute w-[120px]">
         <MobileSidebar user={user} />
       </div>
       <main className="flex h-screen w-full font-inter">

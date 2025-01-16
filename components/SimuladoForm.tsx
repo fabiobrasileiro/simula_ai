@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Select, { StylesConfig } from 'react-select';
 import LoadingPage from './LoadingPage'; // Importe a página de loading
+import { useRouter } from 'next/navigation';
 
 
 
@@ -17,6 +18,8 @@ const SimuladoForm = () => {
         }
     };
 
+    const router = useRouter();
+
     const handleSubmit = () => {
         setLoading(true);
 
@@ -24,6 +27,8 @@ const SimuladoForm = () => {
             setLoading(false); 
             console.log({ file, questionCount, difficulty });
         }, 3000); 
+
+    router.push('/simulado')
     };
 
     return (
